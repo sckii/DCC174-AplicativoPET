@@ -11,36 +11,50 @@ const Loja = () => {
     "https://www.petfoodinstitute.org/wp-content/uploads/2024/06/pet-food-solid-background.jpg"
   ];
 
+  const categorias = [
+    {
+      nome: "Cachorro",
+      url: "https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png"
+    },
+    {
+      nome: "Gato",
+      url: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b"
+    },
+    {
+      nome: "Papagaio",
+      url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSC34BJRINjYu2ro_f-2YfABMqWz53zUOCgkMo6XJKvSugcbMOg"
+    },
+  ]
   const produtos = [
     {
-      nome: "Raçao para passaro",
+      nome: "Petisco Dreamies Frango 40g",
+      url: "https://images.petz.com.br/fotos/1683816692016_mini.jpg",
+      preco: "R$ 7,49"
+    },
+    {
+      nome: "Raçao Reino das aves",
       url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
-      preco: "R$12,00"
+      preco: "R$ 12,00"
+    },
+    {
+      nome: "Whiskas Tempatations Anti Bola de pelo",
+      url: "https://images.petz.com.br/fotos/1683815996213_mini.jpg",
+      preco: "R$ 10,34"
+    },
+    {
+      nome: "Raçao Sempre Vita",
+      url: "https://images.petz.com.br/fotos/40013030000216-1_mini.jpg",
+      preco: "R$ 12,00"
+    },
+    {
+      nome: "Antipulgas Simparic 20mg",
+      url: "https://images.petz.com.br/fotos/1502308227115_mini.jpg",
+      preco: "R$ 101,90"
     },
     {
       nome: "Raçao para passaro",
       url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
-      preco: "R$12,00"
-    },
-    {
-      nome: "Raçao para passaro",
-      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
-      preco: "R$12,00"
-    },
-    {
-      nome: "Raçao para passaro",
-      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
-      preco: "R$12,00"
-    },
-    {
-      nome: "Raçao para passaro",
-      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
-      preco: "R$12,00"
-    },
-    {
-      nome: "Raçao para passaro",
-      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
-      preco: "R$12,00"
+      preco: "R$ 12,00"
     }
   ]
 
@@ -52,7 +66,7 @@ const Loja = () => {
   const navigate = useNavigate();
 
   return (
-    <Page width="95%">
+    <Page scale={-1}>
       <Page.Header marginTop="20px">
         <Text h1> <Home cursor="pointer" onClick={() => navigate("/")}/> <Text span style={{color: "blue"}}>PET</Text> Loja</Text>
       </Page.Header>
@@ -61,7 +75,7 @@ const Loja = () => {
           <Grid xs={24}>
             <Input scale={4/3} placeholder="Pesquisar" width="100%" icon={<Search />}/>
           </Grid>         
-          <Grid xs={24}>
+          <Grid xs={24} justify="center">
             <Card style={{
               backgroundImage: `url(${selectedImageUrl})`,
               width: "100%",
@@ -69,6 +83,7 @@ const Loja = () => {
               backgroundPosition: "center",
               backgroundSize: "cover",
               position: "relative",
+              maxWidth: "700px"
             }}>
               <Pagination 
                 onChange={handleImageChange}
@@ -91,111 +106,36 @@ const Loja = () => {
           <Grid.Container xs={24} justify="center" direction="column" width="100%">
             <Grid><Text h3>Categorias</Text></Grid>
             <Grid.Container gap={1} xs={24} justify="center" direction="row" width="100%">
-              <Grid justify="center">
-                <Card style={{
-                  backgroundImage: `url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTAUAKqQLsmlFIuOeIygvGwIdSAwnQ_QUYil8hSrJan212a_EHD)`,
-                  width: "94px",
-                  height: "94px",
-                  borderRadius: "100px",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  position: "relative",
-                  cursor: "pointer"
-                }}>
-                  <Text p style={{
-                    position: "absolute",
-                    bottom: -30,
-                    width: "060px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    display: "flex",
-                    color: "black",
-                    fontSize: "18px"
-                  }}>Coelho</Text>
-                </Card>
-              </Grid>
-              <Grid  justify="center">
-                <Card style={{
-                  backgroundImage: `url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSC34BJRINjYu2ro_f-2YfABMqWz53zUOCgkMo6XJKvSugcbMOg)`,
-                  width: "94px",
-                  height: "94px",
-                  borderRadius: "100px",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  position: "relative",
-                  cursor: "pointer"
-                }}>
-                  <Text p style={{
-                    position: "absolute",
-                    bottom: -30,
-                    width: "060px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    display: "flex",
-                    color: "black",
-                    fontSize: "18px"
-                  }}>Papagaio</Text>
-                </Card>
-              </Grid>
-              <Grid  justify="center">
-                <Card style={{
-                  backgroundImage: `url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b)`,
-                  width: "94px",
-                  height: "94px",
-                  borderRadius: "100px",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  position: "relative",
-                  cursor: "pointer"
-                }}>
-                  <Text p style={{
-                    position: "absolute",
-                    bottom: -30,
-                    width: "060px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    display: "flex",
-                    color: "black",
-                    fontSize: "18px"
-                  }}>Gato</Text>
-                </Card>
-              </Grid>
-              <Grid  justify="center">
-                <Card style={{
-                  backgroundImage: `url(https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png)`,
-                  width: "94px",
-                  height: "94px",
-                  borderRadius: "100px",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  position: "relative",
-                  cursor: "pointer"
-                }}>
-                  <Text p style={{
-                    position: "absolute",
-                    bottom: -30,
-                    width: "060px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    display: "flex",
-                    color: "black",
-                    fontSize: "18px"
-                  }}>Cachorro</Text>
-                </Card>
-              </Grid>
+              {
+                categorias.map(categoria => {
+                  return (
+                  <Card style={{cursor: "pointer", border: 0, width: "95px", display: "flex", alignItems:"center", justifyContent: "center", flexDirection: "column"}} >
+                      <Card style={{
+                        backgroundImage: `url(${categoria.url})`,
+                        width: "100%",
+                        height: "70px",
+                        borderRadius: "100px",
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        cursor: "pointer"
+                      }}/>
+                      <Text width="100%" style={{textAlign: "center"}} p>{categoria.nome}</Text>
+                  </Card>)
+                })
+              }
             </Grid.Container>
           </Grid.Container> 
           <Spacer h={4}/>
           <Grid.Container xs={24} justify="center" direction="column" width="100%">
             <Grid><Text h3>Produtos</Text></Grid>
-            <Grid.Container gap={1} xs={24} justify="center" width="100%" >
+            <Grid.Container gap={1} xs={24} justify="center" width="100%">
             {
               produtos.map(produto => {
                 return (
-                <Card margin="10px" style={{cursor: "pointer"}}>
-                    <Image src={produto.url} />
-                    <Text p>{produto.nome}</Text>
-                    <Text p>{produto.preco}</Text>
+                <Card margin="10px" style={{cursor: "pointer", width: "100%", maxWidth: "330px", display: "flex", alignItems:"center", justifyContent: "center", flexDirection: "column"}}>
+                    <Image  src={produto.url} style={{maxWidth:"180px"}} />
+                    <Text width="100%" style={{textAlign: "center"}} p>{produto.nome}</Text>
+                    <Text width="100%" style={{textAlign: "center", color: "blue", fontSize: "18px", letterSpacing: "2px"}} p b>{produto.preco}</Text>
                 </Card>)
               })
             }

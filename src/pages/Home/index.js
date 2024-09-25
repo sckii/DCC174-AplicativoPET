@@ -6,7 +6,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Page width="95%">
+    <Page scale={-1}>
       <Page.Header marginTop="20px">
         <Text h1>Início</Text>
         <Divider my={5} h={2}></Divider>
