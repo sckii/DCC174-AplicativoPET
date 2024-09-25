@@ -57,7 +57,7 @@ const Cesta = () => {
     
     const produtoEscolhido = e.target.parentNode.parentNode.childNodes[1].innerText
     setToast({
-      text: "O produto " + produtoEscolhido + " foi removido da cesta.",
+      text: "O produto foi removido da cesta.",
       type: "secondary",
     })
 
@@ -162,7 +162,7 @@ const Cesta = () => {
           <Modal.Content style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
             {
               compraRealizada ? <CheckCircle color="blue"/> : 
-              <Loading type="success" />
+              <Loading type="success"/>
             }
           </Modal.Content>
           {

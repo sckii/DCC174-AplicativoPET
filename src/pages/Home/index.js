@@ -68,7 +68,7 @@ const Home = () => {
                     height="50px" 
                     font="18px" 
                     icon={<UserCheck />}>
-                      Entre para o time
+                      Faça parte
                     </Button>
                 </Grid>
               </Card>

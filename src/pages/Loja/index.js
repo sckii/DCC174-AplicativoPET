@@ -86,19 +86,19 @@ const Loja = () => {
     }
     
     const localProdutos = storage;
-    localProdutos.produtos.push(produtos.find(produto => produto.nome === produtoEscolhido))
+    localProdutos.produtos.push(produtos.find(produto => produtoEscolhido.includes(produto.nome)))
     window.localStorage.setItem("storage", JSON.stringify(localProdutos))
 
     setToast({
-      text: "O produto " + produtoEscolhido + " foi adicionado à cesta.",
+      text: "O produto foi adicionado à cesta.",
       type: "secondary",
     })
   }
 
   return (
     <Page scale={-1} style={{position: "relative"}}>
-        <Card onClick={e => navigate("/cesta")} type="dark" style={{position: "fixed", right: "40px", bottom: "40px", zIndex: "100", borderRadius: "100px"}}>
-          <ShoppingBag color="white" size={30}/>
+        <Card onClick={e => navigate("/cesta")} type="dark" style={{position: "fixed", right: "40px", top: "30px", zIndex: "100", borderRadius: "100px"}}>
+          <ShoppingBag color="white" size={24}/>
         </Card>
       <Page.Header marginTop="20px" >
         <Text h1> <Home cursor="pointer" onClick={() => navigate("/")}/> <Text span style={{color: "blue"}}>PET</Text> Loja</Text>
