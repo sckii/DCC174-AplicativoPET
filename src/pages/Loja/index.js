@@ -1,9 +1,11 @@
-import { Button, Card, Divider, Grid, Input, Link, Page, Spacer, Text, Image, Pagination } from "@geist-ui/core";
-import { ShoppingCart, BookOpen, UserCheck, Search, ChevronRight, ChevronLeft, Home } from '@geist-ui/icons'
+import { Button, Card, Divider, Grid, Input, Link, Page, Spacer, Text, Image, Pagination, useToasts } from "@geist-ui/core";
+import { ShoppingCart, BookOpen, UserCheck, Search, ChevronRight, ChevronLeft, Plus, Home, PlusSquare, ShoppingBag } from '@geist-ui/icons'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Loja = () => {
+  const { setToast } = useToasts();
+
   const imagesUrl = [
     "https://http2.mlstatic.com/D_NQ_NP_869421-CBT72347696158_102023-O.webp",
     "https://ga-petfoodpartners.co.uk/content/uploads/2021/11/Pet-Food-Trends-Main-Banner.png",
@@ -28,33 +30,39 @@ const Loja = () => {
   const produtos = [
     {
       nome: "Petisco Dreamies Frango 40g",
+      loja: "Gatos & Cia",
       url: "https://images.petz.com.br/fotos/1683816692016_mini.jpg",
-      preco: "R$ 7,49"
+      preco: "R$ 7.49"
     },
     {
       nome: "Raçao Reino das aves",
+      loja: "Passaros do reino de deus",
       url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
-      preco: "R$ 12,00"
+      preco: "R$ 12.00"
     },
     {
       nome: "Whiskas Tempatations Anti Bola de pelo",
+      loja: "Agropecuaria Raphael",
       url: "https://images.petz.com.br/fotos/1683815996213_mini.jpg",
-      preco: "R$ 10,34"
+      preco: "R$ 10.34"
     },
     {
       nome: "Raçao Sempre Vita",
+      loja: "Aves de rapina . com",
       url: "https://images.petz.com.br/fotos/40013030000216-1_mini.jpg",
-      preco: "R$ 12,00"
+      preco: "R$ 12.00"
     },
     {
       nome: "Antipulgas Simparic 20mg",
+      loja: "Veterinario Marcos Mignon",
       url: "https://images.petz.com.br/fotos/1502308227115_mini.jpg",
-      preco: "R$ 101,90"
+      preco: "R$ 101.90"
     },
     {
-      nome: "Raçao para passaro",
-      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
-      preco: "R$ 12,00"
+      nome: "Anti-inflamatório Prednisolona 10 Comprimidos",
+      url: "https://images.petz.com.br/fotos/1572902817776_mini.jpg",
+      loja: "Veterinario Marcos Mignon",
+      preco: "R$ 74.99"
     }
   ]
 
@@ -64,10 +72,35 @@ const Loja = () => {
   }
 
   const navigate = useNavigate();
+  
+  function handleCesta(e) {
+    const produtoEscolhido = e.target.parentElement.parentElement.childNodes[1].innerText
+    let storage = window.localStorage.getItem("storage");
+    if (!storage) {
+      window.localStorage.setItem("storage", JSON.stringify({produtos: []}))
+      storage = {
+        produtos: []
+      }
+    } else {
+      storage = JSON.parse(storage);
+    }
+    
+    const localProdutos = storage;
+    localProdutos.produtos.push(produtos.find(produto => produto.nome === produtoEscolhido))
+    window.localStorage.setItem("storage", JSON.stringify(localProdutos))
+
+    setToast({
+      text: "O produto " + produtoEscolhido + " foi adicionado à cesta.",
+      type: "secondary",
+    })
+  }
 
   return (
-    <Page scale={-1}>
-      <Page.Header marginTop="20px">
+    <Page scale={-1} style={{position: "relative"}}>
+        <Card onClick={e => navigate("/cesta")} type="dark" style={{position: "fixed", right: "40px", bottom: "40px", zIndex: "100", borderRadius: "100px"}}>
+          <ShoppingBag color="white" size={30}/>
+        </Card>
+      <Page.Header marginTop="20px" >
         <Text h1> <Home cursor="pointer" onClick={() => navigate("/")}/> <Text span style={{color: "blue"}}>PET</Text> Loja</Text>
       </Page.Header>
       <Page.Content justify="center" alignItems="center" direction="column">
@@ -132,11 +165,23 @@ const Loja = () => {
             {
               produtos.map(produto => {
                 return (
-                <Card margin="10px" style={{cursor: "pointer", width: "100%", maxWidth: "330px", display: "flex", alignItems:"center", justifyContent: "center", flexDirection: "column"}}>
+                  <Card margin="10px" style={{position: "relative", cursor: "pointer", width: "100%", maxWidth: "330px", display: "flex", alignItems:"center", justifyContent: "center", flexDirection: "column"}}>
                     <Image  src={produto.url} style={{maxWidth:"180px"}} />
-                    <Text width="100%" style={{textAlign: "center"}} p>{produto.nome}</Text>
+                    <Text width="100%" height="10px" style={{textAlign: "center"}} type="secondary" p>{produto.loja}</Text>
+                    <Text width="100%" height="45px" style={{textAlign: "center"}} b p>{produto.nome}</Text>
                     <Text width="100%" style={{textAlign: "center", color: "blue", fontSize: "18px", letterSpacing: "2px"}} p b>{produto.preco}</Text>
-                </Card>)
+                    
+                    <Button 
+                      type="success" 
+                      onClick={e => handleCesta(e)}
+                      ghost
+                      width="100%" 
+                      height="50px" 
+                      icon={<PlusSquare />}>
+                        Adicionar a cesta
+                    </Button>
+                  </Card>
+                )
               })
             }
             </Grid.Container>

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Loja from './pages/Loja';
+import Cesta from './pages/Cesta';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path='/loja' element={<Loja />} />
+          <Route path='/cesta' element={<Cesta />} />
         </Routes>
       </GeistProvider>
     </BrowserRouter>
