@@ -14,29 +14,25 @@ const Reserva = () => {
         <Text h1> <CornerUpLeft cursor="pointer" onClick={() => navigate("/hospedagem")}/> Reserva </Text>
       </Page.Header>
       <Page.Content>
-        <Grid.Container gap={2}>
-          <Grid>
-            <Breadcrumbs scale={1.8}>
-              <Breadcrumbs.Item href="#" style={{color: page === "data" ? "blue" : "gray"}} onClick={() => setPage("data")}>Data</Breadcrumbs.Item>
-              <Breadcrumbs.Item href="#" style={{color: page === "seuPet" ? "blue" : "gray"}} onClick={() => setPage("seuPet")}>Seu PET</Breadcrumbs.Item>
-            </Breadcrumbs>
-          </Grid>
-        </Grid.Container>
+        <Breadcrumbs scale={1.8}>
+          <Breadcrumbs.Item href="#" style={{color: page === "data" ? "blue" : "gray"}} onClick={() => setPage("data")}>Data</Breadcrumbs.Item>
+          <Breadcrumbs.Item href="#" style={{color: page === "seuPet" ? "blue" : "gray"}} onClick={() => setPage("seuPet")}>Seu PET</Breadcrumbs.Item>
+        </Breadcrumbs>
         {
           page === "data" ? <></> : (
-            <Grid.Container gap={2} style={{maxWidth: "400px"}} my={2}>
-              <li style={{listStyle: "none", width: "100%"}}>
-                <ul style={{display: "flex", justifyContent: "space-around", alignItems: "center", flexDirection: "row", width: "100%"}}>
+            <Grid.Container style={{maxWidth: "400px", width:"100%"}} my={2} mx={-1}>
+              <li style={{listStyle: "none", width: "100%", margin: 0, padding: 0, boxSizing: "border-box"}}>
+                <ul style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "row", width: "100%"}}>
                   <div style={{display: "flex", justifyContent: "left", alignItems: "center", flexDirection: "row", width: "100%"}}>
                     <Avatar src="https://p2.trrsf.com/image/fget/cf/1200/1200/middle/images.terra.com/2023/12/20/1527502278-golden-retriever.jpg" scale={3}/>
-                    <Text px={1} b p font={1}>Thor</Text>
+                    <Text px={0.4} b p font={1}>Thor</Text>
                   </div>
                   <Checkbox checked={false} scale={1.8}/>
                 </ul>
                 <ul style={{display: "flex", justifyContent: "space-around", alignItems: "center", flexDirection: "row", width: "100%"}}>
                   <div style={{display: "flex", justifyContent: "left", alignItems: "center", flexDirection: "row", width: "100%"}}>
                     <Avatar src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRkD1xxisso3_Va3yFFEmaKRMdULFaZ66SlOKVCnEAqeUDZc-emPLoveO6RSELV3ys9139XW69NNncHXJVq5N9EXQ4nKC-nUjuHD-2jZp4" scale={3}/>
-                    <Text px={1} b p font={1}>Gabriel Vargas</Text>
+                    <Text px={0.4} b p font={1}>Gabriel Vargas</Text>
                   </div>
                   <Checkbox checked={false} scale={1.8}/>
                 </ul>
