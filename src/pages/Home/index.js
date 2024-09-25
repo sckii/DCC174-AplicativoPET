@@ -1,7 +1,10 @@
 import { Button, Card, Divider, Grid, Link, Page, Spacer, Text } from "@geist-ui/core";
 import { ShoppingCart, BookOpen, UserCheck } from '@geist-ui/icons'
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <Page width="95%">
       <Page.Header marginTop="20px">
@@ -11,7 +14,7 @@ const Home = () => {
       <Page.Content justify="center" alignItems="center" direction="column">
         <Grid.Container justify="center" alignItems="center" direction="column">
           <Grid xs={24}>
-            <Text h3>Bem vindo ao <Text span type="success">PET</Text> escolha uma das opções a baixo para proseguir.</Text>
+            <Text h3>Bem vindo ao <Text span style={{color: "blue"}}>PET</Text> escolha uma das opções a baixo para proseguir.</Text>
           </Grid>
           <Grid xs={24} style={{ background: 'white', borderRadius: '15px' }}>
             <Spacer h={5}/>
@@ -31,6 +34,7 @@ const Home = () => {
                     width="100%" 
                     height="50px" 
                     font="18px" 
+                    onClick={() => navigate("/loja")}
                     icon={<ShoppingCart />}>
                       Loja
                     </Button>
