@@ -167,7 +167,7 @@ const Cesta = () => {
           </Modal.Content>
           {
             compraRealizada ? 
-            <Modal.Action passive onClick={() => {setVisible(false); navigate("/loja")}} font={1.5}>
+            <Modal.Action passive onClick={() => {setVisible(false); navigate("/loja"); window.location.reload()}} font={1.5}>
               Concluir
             </Modal.Action> : 
             <></>
