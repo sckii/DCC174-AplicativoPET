@@ -3,7 +3,7 @@ import { ShoppingCart, BookOpen, UserCheck } from '@geist-ui/icons'
 
 const Home = () => {
   return (
-    <Page>
+    <Page width="95%">
       <Page.Header marginTop="20px">
         <Text h1>Início</Text>
         <Divider my={5} h={2}></Divider>
