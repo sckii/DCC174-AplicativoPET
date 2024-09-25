@@ -10,6 +10,40 @@ const Loja = () => {
     "https://www.petfoodsolution.com.br/br/img/caes/prohealth-filhotes-rm.jpg?1",
     "https://www.petfoodinstitute.org/wp-content/uploads/2024/06/pet-food-solid-background.jpg"
   ];
+
+  const produtos = [
+    {
+      nome: "Raçao para passaro",
+      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
+      preco: "R$12,00"
+    },
+    {
+      nome: "Raçao para passaro",
+      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
+      preco: "R$12,00"
+    },
+    {
+      nome: "Raçao para passaro",
+      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
+      preco: "R$12,00"
+    },
+    {
+      nome: "Raçao para passaro",
+      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
+      preco: "R$12,00"
+    },
+    {
+      nome: "Raçao para passaro",
+      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
+      preco: "R$12,00"
+    },
+    {
+      nome: "Raçao para passaro",
+      url: "https://images.petz.com.br/fotos/1631632121850_mini.jpg",
+      preco: "R$12,00"
+    }
+  ]
+
   const [selectedImageUrl, setSelectedImageUrl] = useState(imagesUrl[0]);
   function handleImageChange(imageNumber) {
     setSelectedImageUrl(imagesUrl[imageNumber - 1])
@@ -33,7 +67,8 @@ const Loja = () => {
               width: "100%",
               height: "200px",
               backgroundPosition: "center",
-              position: "relative"
+              backgroundSize: "cover",
+              position: "relative",
             }}>
               <Pagination 
                 onChange={handleImageChange}
@@ -150,10 +185,28 @@ const Loja = () => {
               </Grid>
             </Grid.Container>
           </Grid.Container> 
+          <Spacer h={4}/>
+          <Grid.Container xs={24} justify="center" direction="column" width="100%">
+            <Grid><Text h3>Produtos</Text></Grid>
+            <Grid.Container gap={1} xs={24} justify="center" width="100%" >
+            {
+              produtos.map(produto => {
+                return (
+                <Card margin="10px" style={{cursor: "pointer"}}>
+                    <Image src={produto.url} />
+                    <Text p>{produto.nome}</Text>
+                    <Text p>{produto.preco}</Text>
+                </Card>)
+              })
+            }
+            </Grid.Container>
+          </Grid.Container> 
         </Grid.Container>
       </Page.Content>
       <Page.Footer height="100px">
-        <Grid xs={24} style={{ background: 'white', borderRadius: '15px' }}>
+        <Grid xs={24} style={{ background: 'transparent', borderRadius: '15px' }}>
+          <Spacer h={4}/>
+          <Spacer h={4}/>
           <Spacer h={4}/>
         </Grid>
         <Text p>Criado por <Link href="https://github.com/sckii" color>Samuel</Link> e <Link href="https://github.com/Arthur-lc" color>Arthur</Link></Text>
