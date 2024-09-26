@@ -1,25 +1,47 @@
-import { Button, Card, Divider, Grid, Input, Link, Page, Spacer, Text, Image, Pagination, useToasts, Avatar, Rating, Tooltip, Breadcrumbs, Checkbox } from "@geist-ui/core";
-import { ShoppingCart, BookOpen, UserCheck, Search, ChevronRight, ChevronLeft, Plus, Home, PlusSquare, ShoppingBag, GitPullRequest, CornerUpLeft } from '@geist-ui/icons'
+import { Button, Grid, Link, Page, Spacer, Text, useToasts, Avatar, Breadcrumbs, Checkbox } from "@geist-ui/core";
+import { Home} from '@geist-ui/icons'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import 'react-calendar/dist/Calendar.css';
+import Calendar from "react-calendar";
 
 const Reserva = () => {
   const { setToast } = useToasts();
 
+  const [dataInicio, setDataInicio] = useState(new Date());
+  const [dataFim, setDataFim] = useState(new Date());
+  
   const navigate = useNavigate();
   const [page, setPage] = useState("data");
+
   return (
     <Page scale={-1} style={{position: "relative"}}>
       <Page.Header marginTop="20px" >
-        <Text h1> <CornerUpLeft cursor="pointer" onClick={() => navigate("/hospedagem")}/> Reserva </Text>
+        <Text h1> <Home cursor="pointer" onClick={() => navigate("/")}/> Reserva </Text>
       </Page.Header>
       <Page.Content>
-        <Breadcrumbs scale={1.8}>
-          <Breadcrumbs.Item href="#" style={{color: page === "data" ? "blue" : "gray"}} onClick={() => setPage("data")}>Data</Breadcrumbs.Item>
-          <Breadcrumbs.Item href="#" style={{color: page === "seuPet" ? "blue" : "gray"}} onClick={() => setPage("seuPet")}>Seu PET</Breadcrumbs.Item>
+        <Breadcrumbs scale={1.8} separator=">">
+          <Breadcrumbs.Item href="#" style={{color: page === "data" ? "blue" : "gray"}} >Data</Breadcrumbs.Item>
+          <Breadcrumbs.Item href="#" style={{color: page === "seuPet" ? "blue" : "gray"}} >Seu PET</Breadcrumbs.Item>
         </Breadcrumbs>
         {
-          page === "data" ? <></> : (
+          page === "data" ? (
+            <Grid.Container xs={24}>
+              <Spacer h={4}/>
+              <Grid justify="center" direction="row">
+                <Text p h4>Data Inicio</Text>
+                <Calendar onChange={setDataInicio} value={dataInicio}/>
+              </Grid>
+              <Spacer h={4}/>
+              <Grid justify="center" direction="row">
+                <Text p h4>Data Fim</Text>
+                <Calendar onChange={setDataFim} value={dataFim}/>
+              </Grid>
+              <Button onClick={() => setPage("seuPet")} my={3} width="100%" type="secondary">Proximo</Button>
+
+            </Grid.Container>
+            ) : (
             <Grid.Container style={{maxWidth: "400px", width:"100%"}} my={2} mx={-1}>
               <li style={{listStyle: "none", width: "100%", margin: 0, padding: 0, boxSizing: "border-box"}}>
                 <ul style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "row", width: "100%"}}>
@@ -37,7 +59,7 @@ const Reserva = () => {
                   <Checkbox checked={false} scale={1.8}/>
                 </ul>
                 <ul style={{display: "flex", justifyContent: "left", alignItems: "center", flexDirection: "row", width: "100%"}}>
-                  <Button my={3} width="100%" type="secondary">Finalizar</Button>
+                  <Button my={3} width="100%" type="secondary" onClick={() => navigate("/hospedagem")}>Ver Hoteis</Button>
                 </ul>
               </li>
             </Grid.Container>

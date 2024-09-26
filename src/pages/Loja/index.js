@@ -1,5 +1,5 @@
-import { Button, Card, Divider, Grid, Input, Link, Page, Spacer, Text, Image, Pagination, useToasts } from "@geist-ui/core";
-import { ShoppingCart, BookOpen, UserCheck, Search, ChevronRight, ChevronLeft, Plus, Home, PlusSquare, ShoppingBag } from '@geist-ui/icons'
+import { Button, Card, Grid, Input, Link, Page, Spacer, Text, Image, Pagination, useToasts } from "@geist-ui/core";
+import { Search, ChevronRight, ChevronLeft, Home, PlusSquare, ShoppingBag } from '@geist-ui/icons'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

@@ -51,7 +51,7 @@ const Home = () => {
                     width="100%" 
                     height="50px" 
                     font="18px" 
-                    onClick={() => navigate("/hospedagem")}
+                    onClick={() => navigate("/reserva")}
                     icon={<BookOpen />}>
                       Hospedagem
                     </Button>

@@ -1,5 +1,5 @@
-import { Button, Card, Divider, Grid, Input, Link, Page, Spacer, Text, Image, Pagination, useToasts, Avatar, Rating, Tooltip } from "@geist-ui/core";
-import { ShoppingCart, BookOpen, UserCheck, Search, ChevronRight, ChevronLeft, Plus, Home, PlusSquare, ShoppingBag, GitPullRequest } from '@geist-ui/icons'
+import { Button, Card, Grid, Link, Page, Spacer, Text, Image, useToasts, Avatar, Rating, useModal, Modal, Loading } from "@geist-ui/core";
+import { CheckCircle, CornerUpLeft } from '@geist-ui/icons'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -51,16 +51,24 @@ const Hospedagem = () => {
 
   const navigate = useNavigate();
 
+  const [reservaRealizada, setReservaRealizada] = useState(false);
+  const { visible, setVisible, bindings } = useModal();
+
+  function handleReserva() {
+    setTimeout(() => {
+      setReservaRealizada(true);
+    }, 2000);
+  }
   return (
     <Page scale={-1} style={{position: "relative"}}>
       <Page.Header marginTop="20px" >
-        <Text h1> <Home cursor="pointer" onClick={() => navigate("/")}/> Hoteis </Text>
+        <Text h1> <CornerUpLeft cursor="pointer" onClick={() => navigate("/reserva")}/> Hoteis </Text>
       </Page.Header>
       <Page.Content>
         <Grid.Container gap={2}>
         {
           hoteis.map(hotel => (
-            <Grid onClick={() => navigate("/reserva")}>
+            <Grid>
               <Card style={{maxWidth: "400px"}}>
                 <Grid.Container xs={24} gap={1} justify="center" direction="column">
                   <Grid xs={24} direction="row" width="100%" justify="space-between">
@@ -74,7 +82,7 @@ const Hospedagem = () => {
                     
                     <Grid xs={24} direction="row" width="100%" justify="space-between">
                       <Text width="100%" type="secondary" p font={1} b style={{textAlign: "justify", color: "#1E8138", letterSpacing: "2px"}}>{hotel.preco}</Text>
-                      <Button width="100%" type="secondary">Reservar</Button>
+                      <Button width="100%" type="secondary" onClick={() => handleReserva()}>Reservar</Button>
                     </Grid>
                   </Grid>
                 </Grid.Container>
@@ -83,6 +91,22 @@ const Hospedagem = () => {
           ))
         }
         </Grid.Container>
+        <Modal {...bindings}>
+          <Modal.Title> {reservaRealizada ? "Reserva Realizada" : "Processando reserva" }</Modal.Title>
+          <Modal.Content style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+            {
+              reservaRealizada ? <CheckCircle color="blue"/> : 
+              <Loading type="success"/>
+            }
+          </Modal.Content>
+          {
+            reservaRealizada ? 
+            <Modal.Action passive onClick={() => {setVisible(false); navigate("/hospedagem"); window.location.reload()}} font={1.5}>
+              Concluir
+            </Modal.Action> : 
+            <></>
+          }
+        </Modal>
       </Page.Content>
       <Page.Footer height="100px">
         <Grid xs={24} style={{ background: 'transparent', borderRadius: '15px' }}>

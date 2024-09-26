@@ -1,5 +1,5 @@
-import { Button, Card, Divider, Grid, Input, Link, Page, Spacer, Text, Image, Pagination, useToasts, Table, useModal, Modal, Loading } from "@geist-ui/core";
-import { ShoppingCart, BookOpen, UserCheck, Search, ChevronRight, ChevronLeft, Plus, Home, PlusSquare, ShoppingBag, CornerUpLeft, Trash2, CheckCircle } from '@geist-ui/icons'
+import { Button, Card, Grid, Link, Page, Spacer, Text, Image, useToasts, useModal, Modal, Loading } from "@geist-ui/core";
+import { CornerUpLeft, Trash2, CheckCircle } from '@geist-ui/icons'
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
