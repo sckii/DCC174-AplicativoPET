@@ -74,7 +74,7 @@ const Hospedagem = () => {
                   <Grid xs={24} direction="row" width="100%" justify="space-between">
                     <Avatar src={hotel.avatar} scale={2}/>
                     <Text p b font={0.9}>{hotel.nome}</Text>
-                    <Rating type="success" scale={0.4} count={5} value={hotel.avaliacao} />
+                    <Rating type="success" scale={0.4} count={5} value={hotel.avaliacao} style={{ pointerEvents: 'none' }} />
                   </Grid>
                   <Grid direction="collumn" width="100%">
                     <Image src={hotel.hotel} style={{borderRadius: "10px"}}/>

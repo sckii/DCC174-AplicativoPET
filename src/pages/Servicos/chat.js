@@ -1,0 +1,152 @@
+import styled from 'styled-components';
+import Message from './Components/Message';
+import { useNavigate } from 'react-router-dom';
+import { Avatar } from "@geist-ui/core"
+
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Header = styled.header`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 5px;
+  position: relative;
+  border: solid black 1px;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  flex: 1;
+  margin: 0;
+  font-size: xx-large;
+`;
+
+const ReturnButton = styled.button`
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+  margin-left: 30px;
+  color: black;
+`;
+
+const Messages = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+`;
+
+const InputContainer = styled.div`
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: black;
+`;
+
+const Input = styled.input`
+  border: solid black 1px;
+  height: 100%;
+  width: 100%;
+  border-radius: 1em;
+  margin: 5px;
+  padding-left: 12px;
+`;
+
+const MsgButton = styled.button`
+  color: black;
+  font-weight: bolder;
+  font-size: large;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  height: 100%;
+  width: 40px;
+  margin: 3px;
+`
+
+const Anfitriao = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+`;
+
+const UserDetails = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const UserName = styled.h4`
+    margin: 0;
+`;
+
+const UserSpan = styled.span`
+    margin: 0;
+`;
+
+const AvatarSmall = styled(Avatar)`
+  transform: scale(1.2);
+`;
+
+
+// Chat screen component
+const ChatScreen = () => {
+
+  const navigate = useNavigate()
+  const imgSrc = 'https://i.pinimg.com/564x/18/a4/ee/18a4ee46df0aea9263f2533c6f96afbe.jpg'
+
+  return (
+    <Page>
+      <Header>
+        <ReturnButton onClick={() => navigate("/servicos")}>{"<"}</ReturnButton>
+        <Title>Mensagems</Title>
+      </Header>
+      <Anfitriao>
+        <UserDetails>
+          <Avatar src={imgSrc} scale={3} />
+            <div style={{ marginLeft: "20px" }}>
+              <UserName>Margarida</UserName>
+              <UserSpan>Online</UserSpan>
+            </div>
+          </UserDetails>
+        <AvatarSmall src="https://p2.trrsf.com/image/fget/cf/1200/1200/middle/images.terra.com/2023/12/20/1527502278-golden-retriever.jpg" />
+      </Anfitriao>
+      <Messages>
+        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
+        <Message text={"msg.text"} sender={2} />
+        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
+        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
+        <Message text={"msg.text"} sender={2} />
+        <Message text={"msg.text"} sender={2} />
+        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={2} />
+        <Message text={"msg.text"} sender={1} />
+        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
+        <Message text={"msg.text"} sender={2} />
+        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
+        <Message text={"msg.text"} sender={2} />
+        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
+        <Message text={"msg.text"} sender={2} />
+      </Messages>
+      <InputContainer>
+        <Input defaultValue={''}></Input>
+        <MsgButton>{">"}</MsgButton>
+      </InputContainer>
+    </Page>
+  );
+};
+
+export default ChatScreen;
