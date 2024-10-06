@@ -10,8 +10,9 @@ const MessageContainer = styled.div`
 	background-color: white;
 	border: solid black 1px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-	border-radius: ${props => (props.sender === 1 ? "15px 15px 0px 15px" : "15px 15px 15px 0px")};
-	align-self: ${props => (props.sender === 1 ? "flex-end" : "flex-start")};
+	border-radius: ${props => (props.sender === "user" ? "15px 15px 0px 15px" : "15px 15px 15px 0px")};
+	align-self: ${props => (props.sender === "user" ? "flex-end" : "flex-start")};
+	background-color: ${props => (props.sender === "user" ? "white" : "#f5f5f5")};;
 `;
 
 const Time = styled.span`
@@ -20,13 +21,13 @@ const Time = styled.span`
 	float: right;
 `;
 
-const Message = ({ text, sender }) => {
+const Message = ({ text, sender, time }) => {
   return (
     <MessageContainer sender={sender}>
 			<div>
     		<span>{text}</span>
 			</div>
-    <Time>10:22</Time>
+    <Time>{time}</Time>
     </MessageContainer>
   );
 };

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Message from './Components/Message';
 import { useNavigate } from 'react-router-dom';
 import { Avatar } from "@geist-ui/core"
+import { useState } from 'react';
 
 const Page = styled.div`
   display: flex;
@@ -102,12 +103,45 @@ const AvatarSmall = styled(Avatar)`
   transform: scale(1.2);
 `;
 
+function time() {
+  const currentTime = new Date();
+
+  const hours = String(currentTime.getHours()).padStart(2, '0');
+  const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+
+  const formattedTime = `${hours}:${minutes}`;
+  return formattedTime;
+}
+
 
 // Chat screen component
 const ChatScreen = () => {
 
   const navigate = useNavigate()
   const imgSrc = 'https://i.pinimg.com/564x/18/a4/ee/18a4ee46df0aea9263f2533c6f96afbe.jpg'
+
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSendMessage = () => {
+    if (inputValue.trim() !== "") {
+      setMessages([...messages, { text: inputValue, sender: "user", time: time() }, { text: "Olá!! Seu pet está bem.", sender: "other", time: time()}]);
+      setInputValue("");
+
+      
+    }
+    console.log(messages);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
+  };
 
   return (
     <Page>
@@ -126,24 +160,21 @@ const ChatScreen = () => {
         <AvatarSmall src="https://p2.trrsf.com/image/fget/cf/1200/1200/middle/images.terra.com/2023/12/20/1527502278-golden-retriever.jpg" />
       </Anfitriao>
       <Messages>
-        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
-        <Message text={"msg.text"} sender={2} />
-        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
-        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
-        <Message text={"msg.text"} sender={2} />
-        <Message text={"msg.text"} sender={2} />
-        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={2} />
-        <Message text={"msg.text"} sender={1} />
-        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
-        <Message text={"msg.text"} sender={2} />
-        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
-        <Message text={"msg.text"} sender={2} />
-        <Message text={"msg.iasdklwekflzkxjc asjd aslkdj owe las aalks amsd woie ld oasld "} sender={1} />
-        <Message text={"msg.text"} sender={2} />
+        {messages.map((message, index) => (
+          <Message key={index} text={message.text} sender={message.sender} time={message.time} />
+        ))}
       </Messages>
       <InputContainer>
-        <Input defaultValue={''}></Input>
-        <MsgButton>{">"}</MsgButton>
+        <Input 
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyPress}
+          placeholder="Digite sua mensagem..." 
+        />
+        <MsgButton 
+          onClick={handleSendMessage} >{">"}
+        </MsgButton>
       </InputContainer>
     </Page>
   );
