@@ -1,5 +1,5 @@
 import { Button, Grid, Link, Page, Spacer, Text, useToasts, Avatar, Breadcrumbs, Checkbox } from "@geist-ui/core";
-import { CornerUpLeft} from '@geist-ui/icons'
+import { ChevronLeft} from '@geist-ui/icons'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -31,7 +31,7 @@ const Anfitriao = () => {
   return (
 	<Page scale={-1} style={{position: "relative"}}>
 	  <Page.Header marginTop="20px" >
-		<Text h1> <CornerUpLeft cursor="pointer" onClick={() => goBakc()}/> Anfitrião </Text>
+		<Text h1> <ChevronLeft size={40} cursor="pointer" onClick={() => goBakc()}/> Anfitrião </Text>
 	  </Page.Header>
 	  <Page.Content>
 			{page === "escolher" && (

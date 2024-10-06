@@ -3,7 +3,7 @@ import Message from './Components/Message';
 import { useNavigate } from 'react-router-dom';
 import { Avatar } from "@geist-ui/core"
 import { useState } from 'react';
-import { Send } from '@geist-ui/icons'
+import { Send, ChevronLeft } from '@geist-ui/icons'
 
 const Page = styled.div`
   display: flex;
@@ -17,7 +17,6 @@ const Header = styled.header`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 5px;
-  position: relative;
   border: solid black 1px;
 `;
 
@@ -152,9 +151,9 @@ const ChatScreen = () => {
 
   return (
     <Page>
-      <Header>
-        <ReturnButton onClick={() => navigate("/servicos")}>{"<"}</ReturnButton>
-        <Title style={{ marginTop: "15px" }}>Mensagems</Title>
+      <Header style={{ paddingTop: "10px" }}>
+        <ReturnButton onClick={() => navigate("/servicos")}><ChevronLeft size={40}/></ReturnButton>
+        <Title>Mensagens</Title>
       </Header>
       <Anfitriao>
         <UserDetails>
@@ -163,7 +162,7 @@ const ChatScreen = () => {
               <UserName>Margarida</UserName>
               <UserSpan>Online</UserSpan>
             </div>
-          </UserDetails>
+        </UserDetails>
         <AvatarSmall src="https://p2.trrsf.com/image/fget/cf/1200/1200/middle/images.terra.com/2023/12/20/1527502278-golden-retriever.jpg" />
       </Anfitriao>
       <Messages>
