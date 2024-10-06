@@ -3,6 +3,7 @@ import Message from './Components/Message';
 import { useNavigate } from 'react-router-dom';
 import { Avatar } from "@geist-ui/core"
 import { useState } from 'react';
+import { Send } from '@geist-ui/icons'
 
 const Page = styled.div`
   display: flex;
@@ -48,21 +49,23 @@ const Messages = styled.div`
 `;
 
 const InputContainer = styled.div`
-  height: 50px;
+  height: 40px;
   width: 100%;
   display: flex;
   align-items: center;
   padding: 5px;
-  background-color: black;
+  position: fixed;
+  bottom: 0;
 `;
 
 const Input = styled.input`
-  border: solid black 1px;
   height: 100%;
   width: 100%;
   border-radius: 1em;
+  border: solid black 1px;
   margin: 5px;
   padding-left: 12px;
+  box-shadow: inset gray 0px 0px 6px;
 `;
 
 const MsgButton = styled.button`
@@ -70,11 +73,15 @@ const MsgButton = styled.button`
   font-weight: bolder;
   font-size: large;
   background-color: white;
-  border: none;
+  border: solid black 1px;
   border-radius: 50%;
   height: 100%;
   width: 40px;
   margin: 3px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const Anfitriao = styled.div`
@@ -147,7 +154,7 @@ const ChatScreen = () => {
     <Page>
       <Header>
         <ReturnButton onClick={() => navigate("/servicos")}>{"<"}</ReturnButton>
-        <Title>Mensagems</Title>
+        <Title style={{ marginTop: "15px" }}>Mensagems</Title>
       </Header>
       <Anfitriao>
         <UserDetails>
@@ -173,7 +180,7 @@ const ChatScreen = () => {
           placeholder="Digite sua mensagem..." 
         />
         <MsgButton 
-          onClick={handleSendMessage} >{">"}
+          onClick={handleSendMessage} ><Send/>
         </MsgButton>
       </InputContainer>
     </Page>
