@@ -23,7 +23,8 @@ const Servico = ({grayscale, date}) => {
 				<Avatar src={imgSrc} scale={3} />
 				<div style={{ marginLeft: "20px" }}>
 					<h4 style={{ margin: "0" }}>Margarida</h4>
-					<span style={{ margin: "0" }}>Hospedagem, {date}</span>
+					<span style={{ margin: "0" }}>Hospedagem, </span>
+					<span>{date}</span>
 				</div>
 			</div>
 			<Avatar scale={1.2} src="https://p2.trrsf.com/image/fget/cf/1200/1200/middle/images.terra.com/2023/12/20/1527502278-golden-retriever.jpg" />

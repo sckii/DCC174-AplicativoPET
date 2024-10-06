@@ -25,6 +25,40 @@ const Home = () => {
             justify="center"
           >
             <Grid md={12}>
+              <Card type={"secondary"} width="100%" style={{ width: "100$", backgroundColor: "#00308f" }}>
+                <Text h4 my={0} style={{ textTransform: 'uppercase' }}>Hospedagem</Text>
+                <Text>Explore nossos hoteis bom pra cachorro! Vai sair de ferias? Reserve o anfitrião adequado entre centenas de anfitriões selecionados.</Text>
+                <Grid>
+                  <Button 
+                    type="secondary" 
+                    width="100%" 
+                    height="50px" 
+                    font="18px" 
+                    onClick={() => navigate("/reserva")}
+                    icon={<BookOpen />}>
+                      Hospedagem
+                    </Button>
+                </Grid>
+              </Card>
+            </Grid>
+            <Grid md={12} style={{width: "100%"}}>
+              <Card type={"violet"} width="100%">
+                <Text h4 my={0} style={{ textTransform: 'uppercase' }}>Serviços</Text>
+                <Text>Consulte os seus serviços ativos ou o historico de serviços.</Text>
+                <Grid>
+                  <Button 
+                    type="secondary" 
+                    width="100%" 
+                    height="50px" 
+                    font="18px" 
+                    onClick={() => navigate("/servicos")}
+                    icon={<BookOpen />}>
+                      Hospedagem
+                    </Button>
+                </Grid>
+              </Card>
+            </Grid>
+            <Grid md={12} style={{width: "100%"}}>
               <Card type={"secondary"} width="100%">
                 <Text h4 my={0} style={{ textTransform: 'uppercase' }}>Loja</Text>
                 <Text>Nossa página de lojas parceiras do PET para você encontrar tudo o que precisa para seu bixinho.</Text>
@@ -41,33 +75,17 @@ const Home = () => {
                 </Grid>
               </Card>
             </Grid>
-            <Grid md={12}>
-              <Card type={"violet"} width="100%">
-                <Text h4 my={0} style={{ textTransform: 'uppercase' }}>Hospedagem</Text>
-                <Text>Porque não explorar nossos hoteis bom pra cachorro? Vai sair de ferias? Reserve um hotel para seu pet e deixe que cuidamos dele com muito carinho.</Text>
-                <Grid>
-                  <Button 
-                    type="secondary" 
-                    width="100%" 
-                    height="50px" 
-                    font="18px" 
-                    onClick={() => navigate("/reserva")}
-                    icon={<BookOpen />}>
-                      Hospedagem
-                    </Button>
-                </Grid>
-              </Card>
-            </Grid>
-            <Grid md={24}>
+            <Grid md={24} style={{width: "100%"}}>
               <Card type={"warning"} width="100%">
                 <Text h4 my={0} style={{ textTransform: 'uppercase' }}>TIME PET</Text>
-                <Text>Entre para o time da Pet, sendo vendedor no nosso e-comerce ou também podendo fazer parte da nossa rede de hotelaria.</Text>
+                <Text>Entre para o time da Pet, e cadastre-se como anfitrião ou cuidador.</Text>
                 <Grid>
                   <Button 
                     type="secondary" 
                     width="100%" 
                     height="50px" 
                     font="18px" 
+                    onClick={() => navigate("/cadastro")}
                     icon={<UserCheck />}>
                       Faça parte
                     </Button>
@@ -89,7 +107,7 @@ const Home = () => {
           <Link href="https://docs.google.com/document/d/1orN-mvggGG8bsbIqJfT2rpbsvWFwOeSINlxURMyWLj0/edit?usp=sharing" color>Documento de requisitos</Link><br/>
           <Link href="https://docs.google.com/document/d/1uk7bUxPO1PcEqEYPDv99SR3JVWwmh84-JvuFnzwO40I/edit?usp=sharing" color>Análise da Situação Atual</Link><br/>
           <Link href="https://docs.google.com/document/d/1TJcH1Y7mwPpZZ72KF8X3L-Qb6qWxlngwud8wsURb46k/edit?usp=sharing" color>Relatório de Pesquisa</Link><br/>
-          <Link href="https://www.figma.com/proto/jbls2fanhAxQO7BShMJ9w6/Trab-Ihc?node-id=1-1084&node-type=canvas&t=omd3M2x5Xi6B6uT8-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A1084&share=1&show-proto-sidebar=1" color>Protótipo</Link>
+          <Link href="https://www.figma.com/proto/jbls2fanhAxQO7BShMJ9w6/Trab-Ihc?node-id=1-1084&node-type=canvas&t=oLVRc07EknShTV3S-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A1084&share=1&show-proto-sidebar=1" color>Protótipo</Link>
         </Text>
         <Grid xs={24} style={{ background: 'white', borderRadius: '15px' }}>
           <Spacer h={4}/>

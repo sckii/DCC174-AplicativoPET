@@ -13,7 +13,7 @@ const Reserva = () => {
   const [dataFim, setDataFim] = useState(new Date());
   
   const navigate = useNavigate();
-  const [page, setPage] = useState("data");
+  const [page, setPage] = useState("pet");
 
   return (
     <Page scale={-1} style={{position: "relative"}}>
@@ -22,26 +22,11 @@ const Reserva = () => {
       </Page.Header>
       <Page.Content>
         <Breadcrumbs scale={1.8} separator=">">
+          <Breadcrumbs.Item href="#" style={{color: page === "seuPet" ? "blue" : "gray"}} >Seu pet</Breadcrumbs.Item>
           <Breadcrumbs.Item href="#" style={{color: page === "data" ? "blue" : "gray"}} >Data</Breadcrumbs.Item>
-          <Breadcrumbs.Item href="#" style={{color: page === "seuPet" ? "blue" : "gray"}} >Seu PET</Breadcrumbs.Item>
         </Breadcrumbs>
         {
-          page === "data" ? (
-            <Grid.Container xs={24}>
-              <Spacer h={4}/>
-              <Grid justify="center" direction="row">
-                <Text p h4>Data Inicio</Text>
-                <Calendar onChange={setDataInicio} value={dataInicio}/>
-              </Grid>
-              <Spacer h={4}/>
-              <Grid justify="center" direction="row">
-                <Text p h4>Data Fim</Text>
-                <Calendar onChange={setDataFim} value={dataFim}/>
-              </Grid>
-              <Button onClick={() => setPage("seuPet")} my={3} width="100%" type="secondary">Proximo</Button>
-
-            </Grid.Container>
-            ) : (
+          page === "pet" ? (
             <Grid.Container style={{maxWidth: "400px", width:"100%"}} my={2} mx={-1}>
               <li style={{listStyle: "none", width: "100%", margin: 0, padding: 0, boxSizing: "border-box"}}>
                 <ul style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "row", width: "100%"}}>
@@ -59,9 +44,24 @@ const Reserva = () => {
                   <Checkbox checked={false} scale={1.8}/>
                 </ul>
                 <ul style={{display: "flex", justifyContent: "left", alignItems: "center", flexDirection: "row", width: "100%"}}>
-                  <Button my={3} width="100%" type="secondary" onClick={() => navigate("/hospedagem")}>Ver Hoteis</Button>
+                  <Button my={3} width="100%" type="secondary" onClick={() => setPage("data")}>Próximo</Button>
                 </ul>
               </li>
+            </Grid.Container>
+            ) : (
+            <Grid.Container xs={24}>
+              <Spacer h={4}/>
+              <Grid justify="center" direction="row">
+                <Text p h4>Data Inicio</Text>
+                <Calendar onChange={setDataInicio} value={dataInicio}/>
+              </Grid>
+              <Spacer h={4}/>
+              <Grid justify="center" direction="row">
+                <Text p h4>Data Fim</Text>
+                <Calendar onChange={setDataFim} value={dataFim}/>
+              </Grid>
+              <Button onClick={() => navigate("/hospedagem")} my={3} width="100%" type="secondary">Próximo</Button>
+
             </Grid.Container>
           )
         }
